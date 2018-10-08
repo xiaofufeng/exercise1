@@ -2,15 +2,64 @@
 <html>
 <head>
   <title>Index Page</title>
-  <link rel="stylesheet" text="text/css" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 
+<script>
 
-<script src="myscript.js"></script>
+function compute_x_plus_y(x,y){
+  var z=0;
+  x = parseInt(x);
+  y = parseInt(y);
+  var z=x+y;
+  return z
+}
+function ask_for_x_n_y(){
+  var x=prompt("Enter x value");
+  var y=prompt("Enter y value");
+  var z=compute_x_plus_y(x,y);
+  document.getElementById("demo").innerHTML=z;
+}
+
+function ask_xy() { 
+    var x = document.getElementById("myForm").elements[0].value;
+    var y = document.getElementById("myForm").elements[1].value;
+    var z = compute_x_plus_y(x,y);
+    var x = document.getElementById("demo"); 
+    x.style.fontSize = "25px"; 
+    x.style.color = "red"; 
+    document.getElementById("demo").innerHTML = "The answer is " + z; 
+  }
+function display_my_name(){
+  my_name = prompt("Enter my name");
+alert(my_name+" is happy!");
+}
+
+function show_topic(){
+  var x=document.getElementById("demo");
+  x.style.fontSize="25px";
+  x.style.color="red";
+};
+
+$(document).ready(function(){
+
+$("button#hide_h2").on('click',function(){
+  $("h2").hide(500);
+
+});
+$("button#show_h2").on('click',function(){
+  $("h2").show(300);
+  $("h2").css("color","blue");
+  $("h2").html("You clicked me.");
+});
+})
+</script>
 
 </head>
 
 <body>
-
+<div class="container">
 <!-- Site navigation menu -->
 <ul class="navbar">
   <li><a href="index.html">Home page</a>
@@ -21,6 +70,7 @@
 
 <!-- Main content -->
 <h1>Index Page</h1>
+<h2>aaa</h2>
 
 <p>Welcome to my styled page!
 
@@ -37,8 +87,21 @@ what yet.
 
 <button onclick="display_my_name()">click me</button>
 
-<button onclick="show_topic()">change text color</button>
-<button onclick="ask_for_x_n_y()";>x+y=?</button>
-
+<button type="button" class="btn btn-primary" onclick="show_topic()">change text color</button>
+<button type="button" class="btn btn-warning" onclick="ask_for_x_n_y()";>x+y=?</button>
+<button type="button" class="btn btn-primary" onclick="ask_xy();">Another X + Y = ?</button>
+<button id='hide_h2'>Hide H2 text</button>
+<button id='show_h2'>Show H2 text in blue</button>
+<form id="myForm">
+    <div class="form-group">
+      <label for="1st">Enter first number:</label>
+      <input type="text" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="2nd">Enter second number:</label>
+      <input type="text" class="form-control">
+    </div>
+  </form>
+  </div>
 </body>
 </html>
